@@ -1,6 +1,6 @@
 # Server
 server:
-  port: 5000
+  port: 5001
 
 # Spring DATASOURCE (DataSourceAutoConfigration & DataSourceProperties)
 spring:
@@ -9,18 +9,17 @@ spring:
     username: root
     password:
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
-  sql:
-    init:
-      mode: always
   jackson:
     serialization:
       write-dates-as-timestamps: false
     time-zone: Asia/Seoul
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true # (?? ????? ??? ??)
+    # clean-disabled: true    # ????? ? ??? ?? ??(??? ??? ?? ?? ??)
 
 # Hibernate Logging
 logging:
